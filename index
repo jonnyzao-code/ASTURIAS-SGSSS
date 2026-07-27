@@ -1,1 +1,629 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Ecosistema de Gobierno y Protección - Supersalud</title>
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef2f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px;
+        }
+        .infografia-container {
+            max-width: 1300px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            padding: 35px;
+            transition: all 0.3s ease;
+        }
+        /* Encabezado */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .header-left h1 {
+            font-weight: 700;
+            font-size: 2.2rem;
+            color: #0a2540;
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+        .header-left h1 span {
+            color: #0066cc;
+        }
+        .header-left .subtitulo {
+            font-weight: 500;
+            color: #475569;
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #f1f5f9;
+            padding: 10px 18px;
+            border-radius: 40px;
+        }
+        .header-right i {
+            color: #0066cc;
+            font-size: 1.2rem;
+        }
+        .header-right .badge {
+            background: #0066cc;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+        /* Resumen Ejecutivo */
+        .executive-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+        }
+        .exec-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .exec-item .icon {
+            width: 40px;
+            height: 40px;
+            background: #dbeafe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0066cc;
+            font-size: 1.2rem;
+        }
+        .exec-item .info {
+            display: flex;
+            flex-direction: column;
+        }
+        .exec-item .info .number {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #0a2540;
+        }
+        .exec-item .info .label {
+            font-size: 0.75rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+        /* Pestañas de Navegación */
+        .tabs {
+            display: flex;
+            gap: 5px;
+            background: #f1f5f9;
+            padding: 5px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 10px 22px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tab-btn:hover {
+            background: #e2e8f0;
+            color: #0a2540;
+        }
+        .tab-btn.active {
+            background: #ffffff;
+            color: #0066cc;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Grid de tarjetas */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+            border-left: 6px solid #0066cc;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f6;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -8px rgba(0,0,0,0.1);
+        }
+        .card .icon {
+            font-size: 2.2rem;
+            color: #0066cc;
+            margin-bottom: 15px;
+        }
+        .card h3 {
+            font-weight: 600;
+            color: #0a2540;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        .card p, .card li {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #334155;
+        }
+        .card ul {
+            padding-left: 18px;
+            list-style-type: disc;
+        }
+        .card ul li {
+            margin-bottom: 6px;
+        }
+        .card .badge {
+            background: #0066cc;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 12px;
+        }
+        .card.problema {
+            border-left-color: #e53e3e;
+            background: #fef2f2;
+        }
+        .card.problema .icon { color: #e53e3e; }
+        .card.propuesta {
+            border-left-color: #059669;
+            background: #ecfdf5;
+        }
+        .card.propuesta .icon { color: #059669; }
+        .card.actores {
+            border-left-color: #7c3aed;
+            background: #f5f3ff;
+        }
+        .card.actores .icon { color: #7c3aed; }
+        .card.normativa {
+            border-left-color: #d97706;
+            background: #fffbeb;
+        }
+        .card.normativa .icon { color: #d97706; }
+        /* Gráficos de barras (estilizados) */
+        .chart-container {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+            border: 1px solid #e2e8f0;
+        }
+        .chart-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        .chart-item .label {
+            width: 120px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #334155;
+            flex-shrink: 0;
+        }
+        .chart-item .bar-bg {
+            flex: 1;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .chart-item .bar-fill {
+            height: 100%;
+            border-radius: 20px;
+            background: #0066cc;
+        }
+        .chart-item .bar-fill.red { background: #e53e3e; }
+        .chart-item .bar-fill.green { background: #059669; }
+        .chart-item .bar-fill.purple { background: #7c3aed; }
+        .chart-item .value {
+            width: 60px;
+            text-align: right;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #0a2540;
+        }
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .footer .referencias {
+            font-size: 0.7rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+        .footer .referencias a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .footer .referencias a:hover {
+            text-decoration: underline;
+        }
+        .footer .logo {
+            font-weight: 700;
+            color: #0a2540;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer .logo i {
+            color: #0066cc;
+        }
+        /* Responsive */
+        @media (max-width: 800px) {
+            .header-left h1 { font-size: 1.8rem; }
+            .header-right { padding: 8px 14px; }
+            .tabs { flex-direction: column; align-items: stretch; }
+            .tab-btn { justify-content: center; }
+            .chart-item .label { width: 80px; font-size: 0.7rem; }
+        }
+        @media (max-width: 500px) {
+            .infografia-container { padding: 15px; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="infografia-container">
+
+        <!-- ===== ENCABEZADO ===== -->
+        <div class="header">
+            <div class="header-left">
+                <h1>🛡️ <span>Supersalud</span>: Ecosistema de Gobierno y Protección</h1>
+                <div class="subtitulo">
+                    <i class="fas fa-arrow-right" style="color:#0066cc; margin-right:8px;"></i> 
+                    Diagnóstico y propuesta de fortalecimiento para la IVC del SGSSS
+                </div>
+            </div>
+            <div class="header-right">
+                <i class="fas fa-graduation-cap"></i>
+                <span style="font-weight:500; font-size:0.9rem;">Especialización en Derecho Laboral</span>
+                <span class="badge">2026</span>
+            </div>
+        </div>
+
+        <!-- ===== RESUMEN EJECUTIVO ===== -->
+        <div class="executive-summary">
+            <div class="exec-item">
+                <div class="icon"><i class="fas fa-users"></i></div>
+                <div class="info">
+                    <span class="number">76,404</span>
+                    <span class="label">Reclamos por barreras de acceso (2024-2025)</span>
+                </div>
+            </div>
+            <div class="exec-item">
+                <div class="icon"><i class="fas fa-gavel"></i></div>
+                <div class="info">
+                    <span class="number">213</span>
+                    <span class="label">Multas impuestas (2025)</span>
+                </div>
+            </div>
+            <div class="exec-item">
+                <div class="icon"><i class="fas fa-coins"></i></div>
+                <div class="info">
+                    <span class="number">$75,618 M</span>
+                    <span class="label">Valor total de sanciones</span>
+                </div>
+            </div>
+            <div class="exec-item">
+                <div class="icon"><i class="fas fa-file-signature"></i></div>
+                <div class="info">
+                    <span class="number">2025</span>
+                    <span class="label">Circular 019: fin a autorizaciones innecesarias</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PESTAÑAS ===== -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="tab1"><i class="fas fa-exclamation-triangle"></i> Problema</button>
+            <button class="tab-btn" data-tab="tab2"><i class="fas fa-users"></i> Actores & Roles</button>
+            <button class="tab-btn" data-tab="tab3"><i class="fas fa-book-open"></i> Marco Normativo</button>
+            <button class="tab-btn" data-tab="tab4"><i class="fas fa-lightbulb"></i> Propuesta de Mejora</button>
+            <button class="tab-btn" data-tab="tab5"><i class="fas fa-chart-bar"></i> Cifras & Datos</button>
+        </div>
+
+        <!-- ===== CONTENIDO DE PESTAÑAS ===== -->
+
+        <!-- PESTAÑA 1: PROBLEMA -->
+        <div id="tab1" class="tab-content active">
+            <div class="grid">
+                <div class="card problema">
+                    <div class="icon"><i class="fas fa-exclamation-circle"></i></div>
+                    <h3>Problema Central: Crisis de Gobernanza y Capacidad IVC</h3>
+                    <p>La <strong>Superintendencia Nacional de Salud</strong> enfrenta retos estructurales que limitan su capacidad de inspección, vigilancia y control (IVC), afectando la protección del usuario y la sostenibilidad del SGSSS (Supersalud, 2023; MinSalud, 2022).</p>
+                    <ul>
+                        <li><strong>Coordinación Interinstitucional Débil:</strong> Falta de articulación efectiva entre Supersalud, ADRES, UGPP y entes territoriales, generando duplicidades y vacíos de control (Ley 1438 de 2011).</li>
+                        <li><strong>Barreras de Acceso:</strong> 76.404 reclamos por autorizaciones para enfermedades de alto costo (cáncer, VIH) entre 2024-2025, evidenciando negación injustificada de servicios (El País, 2025).</li>
+                        <li><strong>Evisión y Elusión de Aportes:</strong> La UGPP documenta subdeclaración sistemática de ingresos, especialmente en trabajadores independientes, comprometiendo los recursos del sistema (UGPP, 2022).</li>
+                        <li><strong>Desigualdades Territoriales:</strong> Brechas en capacidad institucional entre departamentos, afectando la vigilancia en zonas rurales y dispersas (Ley 715 de 2001).</li>
+                    </ul>
+                    <span class="badge">Riesgo Sistémico</span>
+                </div>
+                <div class="card actores">
+                    <div class="icon"><i class="fas fa-sitemap"></i></div>
+                    <h3>Ecosistema de Actores Involucrados</h3>
+                    <p><strong>La IVC es una responsabilidad compartida:</strong></p>
+                    <ul>
+                        <li><strong>Supersalud:</strong> Ente técnico máximo de IVC. Vigila, sanciona e interviene EPS e IPS (Ley 100/1993, Art. 230).</li>
+                        <li><strong>UGPP:</strong> Fiscaliza y cobra aportes omitidos. Cruza datos con DIAN y PILA para detectar evasión (Decreto 169/2008).</li>
+                        <li><strong>ADRES:</strong> Administra los recursos financieros y realiza giros directos a IPS, con auditoría concurrente.</li>
+                        <li><strong>Ministerio de Salud:</strong> Rector del sistema, define el PBS y las políticas de calidad (Res. 2292/2021).</li>
+                        <li><strong>Entes Territoriales:</strong> Ejecutan la vigilancia en campo, habilitación de servicios y salud pública (Ley 1438/2011).</li>
+                        <li><strong>EPS e IPS:</strong> Aseguramiento y prestación, sujetos a control y sanción por la Supersalud.</li>
+                    </ul>
+                    <span class="badge">Gobernanza Multinivel</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PESTAÑA 2: ACTORES Y ROLES (más detallado) -->
+        <div id="tab2" class="tab-content">
+            <div class="grid">
+                <div class="card actores" style="border-left-color:#0066cc; background:#f0f9ff;">
+                    <div class="icon"><i class="fas fa-building"></i></div>
+                    <h3>Superintendencia Nacional de Salud</h3>
+                    <p><strong>Naturaleza:</strong> Entidad técnica adscrita al MinSalud, con autonomía administrativa (Ley 100/1993).</p>
+                    <ul>
+                        <li><strong>Funciones Clave:</strong> Vigilancia, inspección, sanción e intervención forzosa administrativa (Decreto 780/2016).</li>
+                        <li><strong>Herramientas:</strong> Auditorías integrales, visitas de inspección, análisis de riesgo y gestión de PQRD.</li>
+                        <li><strong>Acción Reciente:</strong> Circular 019/2025 prohíbe autorizaciones innecesarias para urgencias, cáncer y VIH (Supersalud, 2025).</li>
+                    </ul>
+                    <span class="badge">Autoridad de Control</span>
+                </div>
+                <div class="card actores" style="border-left-color:#7c3aed; background:#f5f3ff;">
+                    <div class="icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3>UGPP - Unidad de Gestión Pensional</h3>
+                    <p><strong>Naturaleza:</strong> Unidad Administrativa Especial adscrita al MinHacienda (Ley 1151/2007).</p>
+                    <ul>
+                        <li><strong>Fiscalización:</strong> Identifica omisiones mediante cruce de datos DIAN-PILA (UGPP, 2022).</li>
+                        <li><strong>Ciclo de Control:</strong> Analítica de datos → Requerimiento → Liquidación oficial → Cobro persuasivo/coactivo.</li>
+                        <li><strong>Impacto:</strong> Recupera recursos para el SGSSS y combate la evasión en independientes y empresas.</li>
+                    </ul>
+                    <span class="badge">Control Financiero</span>
+                </div>
+                <div class="card actores" style="border-left-color:#059669; background:#ecfdf5;">
+                    <div class="icon"><i class="fas fa-hospital-user"></i></div>
+                    <h3>EPS e IPS: Aseguramiento y Prestación</h3>
+                    <p><strong>EPS (Entidades Promotoras de Salud):</strong> Aseguran la afiliación, el recaudo y la gestión del riesgo en salud (Ley 100/1993).</p>
+                    <ul>
+                        <li>Responsables de la autorización y continuidad de servicios.</li>
+                        <li>Sujetas a sanción por negación de servicios y demoras (Supersalud, 2023).</li>
+                    </ul>
+                    <p><strong>IPS (Instituciones Prestadoras):</strong> Materializan la atención clínica.</p>
+                    <ul>
+                        <li>Deben cumplir estándares de habilitación (Res. 3100/2019).</li>
+                        <li>Responsables de la calidad y seguridad del paciente.</li>
+                    </ul>
+                    <span class="badge">Operadores del Sistema</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PESTAÑA 3: MARCO NORMATIVO -->
+        <div id="tab3" class="tab-content">
+            <div class="grid">
+                <div class="card normativa">
+                    <div class="icon"><i class="fas fa-gavel"></i></div>
+                    <h3>Fundamentos Legales de la IVC</h3>
+                    <ul>
+                        <li><strong>Constitución Política (Art. 49):</strong> La salud es un servicio público a cargo del Estado.</li>
+                        <li><strong>Ley 100 de 1993:</strong> Crea el SGSSS y la Supersalud como ente de control.</li>
+                        <li><strong>Ley 1122 de 2007:</strong> Define las funciones de inspección, vigilancia y control.</li>
+                        <li><strong>Ley 1438 de 2011:</strong> Fortalece la rectoría del MinSalud y las facultades sancionatorias de la Supersalud (Art. 126).</li>
+                        <li><strong>Ley Estatutaria 1751 de 2015:</strong> Eleva la salud a derecho fundamental y exige integralidad y continuidad.</li>
+                        <li><strong>Decreto 780 de 2016:</strong> Decreto Único Reglamentario que sistematiza la IVC.</li>
+                        <li><strong>Resolución 3100 de 2019:</strong> Estándares de habilitación para prestadores (IPS y profesionales independientes).</li>
+                    </ul>
+                    <span class="badge">Arquitectura Jurídica</span>
+                </div>
+                <div class="card normativa" style="border-left-color:#7c3aed; background:#f5f3ff;">
+                    <div class="icon"><i class="fas fa-tools"></i></div>
+                    <h3>Herramientas de Control</h3>
+                    <ul>
+                        <li><strong>SISPRO:</strong> Repositorio único de datos de afiliación, prestación y financiamiento.</li>
+                        <li><strong>BDUA:</strong> Base de Datos Única de Afiliados, administrada por ADRES.</li>
+                        <li><strong>PILA:</strong> Planilla Integrada de Liquidación de Aportes, controlada por la UGPP.</li>
+                        <li><strong>MIPRES:</strong> Sistema para prescripción de tecnologías no PBS.</li>
+                        <li><strong>Auditorías y Visitas de Inspección:</strong> Verificación in situ del cumplimiento normativo.</li>
+                    </ul>
+                    <span class="badge">Tecnología para el Control</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PESTAÑA 4: PROPUESTA DE MEJORA -->
+        <div id="tab4" class="tab-content">
+            <div class="grid">
+                <div class="card propuesta">
+                    <div class="icon"><i class="fas fa-arrow-up"></i></div>
+                    <h3>Plan de Fortalecimiento de la IVC</h3>
+                    <p><strong>Objetivo:</strong> Modernizar la Supersalud y su ecosistema de control, basado en la Ley 1751/2015 y el Decreto 780/2016.</p>
+                    <ul>
+                        <li><strong>Pilar 1 - Tecnológico:</strong> Implementar un sistema de inteligencia de datos (Big Data) para vigilancia en tiempo real, interoperando con ADRES y UGPP.</li>
+                        <li><strong>Pilar 2 - Organizacional:</strong> Crear una unidad especializada de investigación y sanción, con perfiles en auditoría, análisis de datos y salud pública.</li>
+                        <li><strong>Pilar 3 - Normativo:</strong> Agilizar los procesos sancionatorios y establecer multas más disuasivas, incluyendo inhabilidades para directivos de EPS reincidentes.</li>
+                        <li><strong>Pilar 4 - Territorial:</strong> Fortalecer las secretarías de salud departamentales, con recursos y personal para la vigilancia local.</li>
+                        <li><strong>Pilar 5 - Financiero:</strong> Articular el control de la UGPP con la ADRES para prevenir giros indebidos y detectar patrones de fraude.</li>
+                    </ul>
+                    <span class="badge">Enfoque Técnico-Jurídico</span>
+                </div>
+                <div class="card" style="border-left-color:#d97706; background:#fffbeb;">
+                    <div class="icon"><i class="fas fa-check-circle"></i></div>
+                    <h3>Impacto Esperado</h3>
+                    <ul>
+                        <li>Reducción de las barreras de acceso y los tiempos de autorización en un 40%.</li>
+                        <li>Incremento en la fiscalización de la evasión, recuperando recursos para el sistema (UGPP, 2022).</li>
+                        <li>Mejora en la gobernanza y coordinación interinstitucional.</li>
+                        <li>Mayor transparencia y confianza ciudadana en el sistema de salud.</li>
+                        <li>Equidad territorial: fortalecimiento de la vigilancia en zonas rurales y dispersas.</li>
+                    </ul>
+                    <span class="badge">Sostenibilidad y Equidad</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PESTAÑA 5: CIFRAS Y DATOS (gráficos) -->
+        <div id="tab5" class="tab-content">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+                <div class="chart-container">
+                    <h4 style="margin-bottom:15px; color:#0a2540;"><i class="fas fa-chart-line" style="color:#0066cc; margin-right:10px;"></i>Problemas de Acceso (2024-2025)</h4>
+                    <div class="chart-item">
+                        <span class="label">Autorizaciones</span>
+                        <div class="bar-bg"><div class="bar-fill red" style="width:70%;"></div></div>
+                        <span class="value">70%</span>
+                    </div>
+                    <div class="chart-item">
+                        <span class="label">Demoras en Medicamentos</span>
+                        <div class="bar-bg"><div class="bar-fill red" style="width:55%;"></div></div>
+                        <span class="value">55%</span>
+                    </div>
+                    <div class="chart-item">
+                        <span class="label">Negación de Servicios</span>
+                        <div class="bar-bg"><div class="bar-fill red" style="width:40%;"></div></div>
+                        <span class="value">40%</span>
+                    </div>
+                    <div class="chart-item">
+                        <span class="label">Redes Insuficientes</span>
+                        <div class="bar-bg"><div class="bar-fill red" style="width:30%;"></div></div>
+                        <span class="value">30%</span>
+                    </div>
+                    <p style="font-size:0.7rem; color:#64748b; margin-top:10px;">Fuente: Supersalud (2023), Informe de Gestión.</p>
+                </div>
+                <div class="chart-container">
+                    <h4 style="margin-bottom:15px; color:#0a2540;"><i class="fas fa-gavel" style="color:#7c3aed; margin-right:10px;"></i>Fiscalización UGPP: Ciclo de Control</h4>
+                    <div class="chart-item">
+                        <span class="label">Detección</span>
+                        <div class="bar-bg"><div class="bar-fill purple" style="width:100%;"></div></div>
+                        <span class="value">100%</span>
+                    </div>
+                    <div class="chart-item">
+                        <span class="label">Requerimiento</span>
+                        <div class="bar-bg"><div class="bar-fill purple" style="width:80%;"></div></div>
+                        <span class="value">80%</span>
+                    </div>
+                    <div class="chart-item">
+                        <span class="label">Liquidación</span>
+                        <div class="bar-bg"><div class="bar-fill purple" style="width:60%;"></div></div>
+                        <span class="value">60%</span>
+                    </div>
+                    <div class="chart-item">
+                        <span class="label">Cobro Efectivo</span>
+                        <div class="bar-bg"><div class="bar-fill green" style="width:45%;"></div></div>
+                        <span class="value">45%</span>
+                    </div>
+                    <p style="font-size:0.7rem; color:#64748b; margin-top:10px;">Fuente: UGPP (2022), Lineamientos de Fiscalización.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FOOTER CON REFERENCIAS APA ===== -->
+        <div class="footer">
+            <div class="referencias">
+                <i class="fas fa-book-open" style="color:#0066cc; margin-right:8px;"></i> 
+                <strong>Referencias APA (7ª ed.):</strong><br>
+                Congreso de la República. (1993). <em>Ley 100 de 1993</em>. Bogotá, Colombia.<br>
+                Congreso de la República. (2011). <em>Ley 1438 de 2011</em>. Bogotá, Colombia.<br>
+                Congreso de la República. (2015). <em>Ley 1751 de 2015</em>. Bogotá, Colombia.<br>
+                Ministerio de Salud y Protección Social. (2016). <em>Decreto 780 de 2016</em>. Bogotá, Colombia.<br>
+                Ministerio de Salud y Protección Social. (2021). <em>Resolución 2292 de 2021</em>.<br>
+                Ministerio de Salud y Protección Social. (2022). <em>Informe de gestión de inspección, vigilancia y control</em>. MinSalud.<br>
+                Superintendencia Nacional de Salud. (2023). <em>Memorias de gestión y sanciones recientes</em>. Supersalud.<br>
+                Unidad de Gestión Pensional y Parafiscales – UGPP. (2022). <em>Lineamientos para el cálculo del Ingreso Base de Cotización (IBC)</em>.<br>
+                <a href="https://www.elespectador.com/salud/supersalud-advierte-sanciones-a-eps-que-incumplan-circular-019-que-prohibe-autorizaciones-previas/" target="_blank">El País (2025). Supersalud advierte sanciones a EPS por Circular 019.</a>
+            </div>
+            <div class="logo">
+                <i class="fas fa-university"></i> Asturias Corporación Universitaria
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT PARA PESTAÑAS -->
+    <script>
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Quitar clase activa de todos los tabs y contenidos
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                // Activar el tab clickeado
+                tab.classList.add('active');
+                const tabId = tab.dataset.tab;
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
